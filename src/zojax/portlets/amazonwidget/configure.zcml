@@ -1,0 +1,24 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.portlets">
+
+  <zojax:portlet
+     name="portlets.amazon"
+     title="Amazon Widgets"
+     schema=".interfaces.IAmazonWidgetsPortlet" />
+
+  <zojax:pagelet
+     type="portlet.view"
+     for=".interfaces.IAmazonWidgetsPortlet"
+     template="portlet.pt"
+     permission="zojax.ManagePortlets" />
+
+  <zojax:pagelet
+     type="portlet.config"
+     for=".interfaces.IAmazonWidgetsPortlet"
+     class=".portlet.PortletEdit"
+     template="portletedit.pt"
+     permission="zojax.ManagePortlets" />
+
+</configure>

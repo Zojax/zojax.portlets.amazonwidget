@@ -1,0 +1,106 @@
+=====================
+Amazon Widget portlet
+=====================
+
+    >>> from zope import component, interface
+    >>> from zope.testbrowser.testing import Browser
+    >>> from zope.app.testing.functional import getRootFolder
+    >>> from zope.app.component.hooks import setSite
+    >>> from zojax.portlet.interfaces import IPortlet, IPortletManager
+    >>> from zojax.extensions.interfaces import IExtensible
+
+    >>> root = getRootFolder()
+    >>> setSite(root)
+    >>> sm = root.getSiteManager()
+    >>> interface.alsoProvides(root, IExtensible)
+    
+user
+
+    >>> user = Browser()
+    >>> user.handleErrors = False
+    >>> user.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> user.open("http://localhost/test.html")
+    >>> 'Amazon Widget' in user.contents
+    False
+
+change portlet settings
+
+    >>> actor = Browser()
+    >>> actor.handleErrors = False
+    >>> actor.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> actor.open("http://localhost/++extensions++/")
+    >>> actor.getLink('Portlets').click()
+
+set portlets manager
+
+    >>> actor.getLink('Left column portlets').click()
+    >>> actor.open('http://localhost/++extensions++/portlets/columns.left/?form.widgets.portletIds:list=portlets.amazon&form.buttons.save=Save&form.widgets.status=1')
+
+
+Add new widget
+
+    >>> actor.open('http://localhost/++extensions++/portlets/columns.left/')
+    >>> actor.getLink('Amazon Widgets').click()
+    >>> actor.getControl('Widget source').value = '<script> widget1 </script>'
+    >>> actor.getControl(name="form.add").click()
+    >>> print actor.contents
+    <html>
+    ...Amazon widget has been added...
+    <div class="z-form-field">
+       <label>Widget source</label>
+       <div>
+         <textarea rows="10" name="form.widget" class="wide">&lt;script&gt; widget1 &lt;/script&gt;</textarea>
+       </div>
+    </div>
+    ...
+    <td><script> widget1 </script></td>
+    ...
+    </html>
+
+    >>> from zope.publisher.browser import BrowserView
+    >>> from zope.publisher.browser import TestRequest
+
+    >>> request = TestRequest()
+    >>> view = BrowserView(root, request)
+
+    >>> pm = sm.getMultiAdapter(
+    ...     (root, request, view), IPortletManager, name='columns.left')
+
+    >>> portlet = sm.getMultiAdapter(
+    ...     (root, None, pm, view), IPortlet, name='portlets.amazon')
+    >>> print portlet.widgets
+    [u'<script> widget1 </script>']
+
+    >>> actor.getControl(name="form.widget").value = '<script> widget 1 </script>'
+    >>> actor.getControl(name="form.widget.save").click()
+
+    >>> print portlet.widgets
+    [u'<script> widget 1 </script>']
+
+    >>> actor.getControl(name="form.widget.remove").click()
+    >>> print portlet.widgets
+    []
+
+    >>> actor.getControl('Widget source').value = '<script> widget1 </script>'
+    >>> actor.getControl(name="form.add").click()
+
+
+check portlet
+
+    >>> user = Browser()
+    >>> user.handleErrors = False
+    >>> user.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> user.open("http://localhost/test.html")
+    >>> print user.contents
+    <html>
+    ...
+    <div class="z-portlet portlet-amazonwidget z-portlet-nodecoration">
+      <h2 class="z-portlet-header">Amazon Widgets</h2>
+      <div class="z-portlet-body">
+        <div class="z-portlet-item"><script> widget1 </script></div>
+      </div>
+    </div>
+    ...
+    </html>
+
+    >>> setSite(None)
