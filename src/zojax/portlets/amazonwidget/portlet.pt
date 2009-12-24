@@ -1,0 +1,7 @@
+<div class="z-portlet portlet-amazonwidget z-portlet-nodecoration" i18n:domain="zojax">
+  <h2 class="z-portlet-header" i18n:translate="">Amazon Widgets</h2>
+  <div class="z-portlet-body">
+    <div class="z-portlet-item" 
+	 tal:repeat="widget context/widgets" tal:content="structure widget"></div>
+  </div>
+</div>

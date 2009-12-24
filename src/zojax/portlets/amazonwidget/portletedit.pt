@@ -1,0 +1,54 @@
+<div class="topframe" i18n:domain="zojax.portlets">
+  <h1 i18n:translate="">Amazon Widgets Portlet</h1>
+  <br />
+    
+  <div tal:condition="context/widgets">
+    <table class="wide">
+      <tr valign="top" tal:repeat="widget context/widgets">
+	<td style="width:70%">
+	  <form tal:attributes="action request/URL" method="post">
+	    <div class="z-form-field">
+	      <label i18n:translate="">Widget source</label>
+	      <div>
+		<textarea rows="10" name="form.widget" class="wide"
+			  tal:content="widget"></textarea>
+	      </div>
+	    </div>
+	    <input type="hidden" name="widgetIdx:int"
+		   tal:attributes="value repeat/widget/index" />
+	    <input type="submit" name="form.widget.save" class="z-form-savebutton"
+		   value="Save" i18n:attributes="value" />
+	    <input type="submit" name="form.widget.remove" class="z-form-removebutton"
+		   value="Remove" i18n:attributes="value" />
+	  </form>
+	</td>
+	<td tal:content="structure widget"></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div tal:condition="not:context/widgets" i18n:translate="">
+    There are no widgets.
+  </div>
+</div>
+  
+<div class="z-frame">
+  <h2 i18n:translate="">Add Amazon Widget</h2>
+  
+  <form tal:attributes="action request/URL" method="post">
+    <div class="z-form-field">
+      <label for="form_amazon_widget">Widget source</label>
+      
+      <div>
+	<textarea rows="5" id="form_amazon_widget" 
+		  name="form.amazon.widget"></textarea>
+      </div>
+    </div>
+    
+    <div class="z-form-controls">
+      <hr />
+      <input type="submit" name="form.add" class="z-form-button" 
+	     value="Add" i18n:attributes="value" />
+    </div>
+  </form>
+</div>
