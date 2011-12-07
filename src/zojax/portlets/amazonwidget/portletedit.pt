@@ -1,4 +1,4 @@
-<div class="topframe" i18n:domain="zojax.portlets">
+<div class="topframe" i18n:domain="zojax.portlets.amazonwidget">
   <h1 i18n:translate="">Amazon Widgets Portlet</h1>
   <br />
     
@@ -37,7 +37,7 @@
   
   <form tal:attributes="action request/URL" method="post">
     <div class="z-form-field">
-      <label for="form_amazon_widget">Widget source</label>
+      <label for="form_amazon_widget" i18n:translate="">Widget source</label>
       
       <div>
 	<textarea rows="5" id="form_amazon_widget" 
