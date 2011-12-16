@@ -1,0 +1,82 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Thu Dec  8 23:14:21 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/portlets/amazonwidget/configure.zcml:6
+#: src/zojax/portlets/amazonwidget/portlet.pt:2
+msgid "Amazon Widgets"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/interfaces.py:28
+msgid "Amazon widgets"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portlet.py:32
+msgid "You can't add empty string."
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portlet.py:37
+msgid "Amazon widget has been added."
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portlet.py:44
+msgid "You can't set empty string."
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portlet.py:49
+msgid "Amazon widget has been saved."
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portlet.py:56
+msgid "Amazon widget has been removed."
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:19
+msgid "Save"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:2
+msgid "Amazon Widgets Portlet"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:21
+msgid "Remove"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:30
+msgid "There are no widgets."
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:36
+msgid "Add Amazon Widget"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:40
+msgid "Widget source"
+msgstr ""
+
+#: src/zojax/portlets/amazonwidget/portletedit.pt:50
+msgid "Add"
+msgstr ""
+
