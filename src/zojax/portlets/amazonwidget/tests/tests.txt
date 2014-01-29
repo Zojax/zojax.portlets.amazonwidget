@@ -94,12 +94,10 @@ check portlet
     >>> print user.contents
     <html>
     ...
-    <div class="z-portlet portlet-amazonwidget z-portlet-nodecoration">
       <h2 class="z-portlet-header">Amazon Widgets</h2>
       <div class="z-portlet-body">
         <div class="z-portlet-item"><script> widget1 </script></div>
       </div>
-    </div>
     ...
     </html>
 
